@@ -1,0 +1,12 @@
+{
+ "require": {
+   "damel/flight-skeleton": "dev-master",
+   "predictionio/predictionio": "~0.6.0",
+   "guzzlehttp/guzzle": "4.*"
+ },
+ "autoload": {
+	"classmap": [
+		"controllers"
+	]
+  }
+}
