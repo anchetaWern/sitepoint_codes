@@ -1,0 +1,12 @@
+{% raw %}
+<script id="categories-template" type="text/x-handlebars-template">
+{{#each categories}}
+<div class="radio">
+  <label>
+    <input type="radio" name="category_id" id="category_id" value="{{id}}">
+    {{name}}
+  </label>
+</div>
+{{/each}}
+</script>
+{% endraw %}

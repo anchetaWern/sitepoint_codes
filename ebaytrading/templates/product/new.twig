@@ -1,0 +1,75 @@
+
+{% extends "/base.twig" %}
+{% block content %}
+{{ parent() }}
+<div class="row">
+	<div class="col-md-4">	
+		<div class="alert alert-{{ flash.message.type }}">
+			{{ flash.message.text }}
+
+			{% for r in flash.message.data %}
+			<li>{{ r[0] }}</li>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<form class="form-horizontal" method="POST" action="{{ baseUrl }}/products/create">
+		  <fieldset>
+		    <legend>Create new Product</legend>
+		    <div class="form-group">
+		      <label for="title" class="col-lg-2 control-label">Title</label>
+		      <div class="col-lg-10">
+		        <input type="text" class="form-control" id="title" name="title" value="{{ flash.form.title }}">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		    	<label for="category" class="col-lg-2 control-label">Category</label>
+		    	<div class="col-lg-10" id="categories-container">
+		    		
+		    	</div>
+		    </div>
+		    <div class="form-group">
+		      <label for="price" class="col-lg-2 control-label">Price</label>
+		      <div class="col-lg-10">
+		        <input type="text" class="form-control" id="price" name="price" value="{{ flash.form.price }}">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label for="quantity" class="col-lg-2 control-label">Quantity</label>
+		      <div class="col-lg-10">
+		        <input type="text" class="form-control" id="quantity" name="quantity" value="{{ flash.form.quantity }}">
+		      </div>
+		    </div>		  
+		    <div class="form-group">
+		      <label for="brand" class="col-lg-2 control-label">Brand</label>
+		      <div class="col-lg-10">
+		        <input type="text" class="form-control" id="brand" name="brand" value="{{ flash.form.brand }}">
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <label for="description" class="col-lg-2 control-label">Description</label>
+		      <div class="col-lg-10">
+		        <textarea class="form-control" rows="3" id="description" name="description" value="{{ flash.form.description }}">{{ flash.form.description }}</textarea>
+		      </div>
+		    </div>
+		    
+		    <div class="form-group">
+		      <div class="col-lg-10 col-lg-offset-2">
+		        <button type="submit" class="btn btn-primary">Add Product</button>
+		      </div>
+		    </div>
+		  </fieldset>
+		</form>
+	</div>
+
+	<div class="col-md-6">
+		<h5>Upload Photos</h5>
+		<form action="{{ baseUrl }}/upload" method="POST" class="dropzone" id="photosdropzone" enctype="multipart/form-data"></form>
+	</div>
+</div>
+
+
+{% include 'partials/categories.html' %}
+{% endblock %}

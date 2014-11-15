@@ -1,0 +1,250 @@
+{% extends "/base.twig" %}
+{% block content %}
+{{ parent() }}
+<div class="row">
+	<div class="col-md-4">	
+		<div class="alert alert-{{ flash.message.type }}">
+			{{ flash.message.text }}
+
+			{% for r in flash.message.data %}
+			<li>{{ r[0] }}</li>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<form class="form-horizontal" method="POST" action="{{ baseUrl }}/settings/update">
+		  <fieldset>
+		    <legend>Update Settings</legend>
+
+		    <div class="form-group">
+		      <label for="store_name">Store Name</label>
+		      <input type="text" id="store_name" name="store_name" class="form-control" value="{{ store.store_name }}">
+		    </div>
+
+		    <div class="form-group">
+		      <label for="county">County</label>
+		      <input type="text" id="county" name="county" class="form-control" value="{{ store.county }}">
+		    </div>
+
+		    <div class="form-group">
+		      <label for="street">Street</label>
+		      <input type="text" id="street" name="street" class="form-control" value="{{ store.street }}">
+		    </div>
+
+		    <div class="form-group">
+		      <label for="country_code_type">Country Code Type</label>
+		      <input type="text" id="country_code_type" name="country_code_type" class="form-control" value="{{ store.country_code_type }}">
+		    </div>
+
+		    <div class="form-group">
+		      <label for="ebay_website">Ebay Website</label>
+		      <input type="text" id="ebay_website" name="ebay_website" class="form-control" value="{{ store.ebay_website }}">
+		    </div>
+
+		    <div class="form-group">
+		      <label for="postal_code">Postal Code</label>
+		      <input type="text" id="postal_code" name="postal_code" class="form-control" value="{{ store.postal_code }}">
+		    </div>		  
+
+			<div class="form-group">
+			{% set category_mapping = '' %}
+			{% if store.category_mapping == 1 %}
+			{% set category_mapping = 'checked' %}
+			{% endif %}			
+				<div class="checkbox">
+				  <label for="category_mapping">
+				    <input type="checkbox" id="category_mapping" name="category_mapping" {{ category_mapping }}>
+				    Category Mapping
+				  </label>
+				</div>
+			</div>			
+
+			<div class="form-group">	
+			{% set category_prefill = '' %}
+			{% if store.category_prefill == 1 %}
+			{% set category_prefill = 'checked' %}
+			{% endif %}	
+				<div class="checkbox">
+				  <label for="category_prefill">
+				    <input type="checkbox" id="category_prefill" name="category_prefill" {{ category_prefill }}>
+				    Category Prefill
+				  </label>
+				</div>
+			</div>
+				
+		    <div class="form-group">
+		      <label for="currency_code">Currency Code</label>
+		      <input type="text" id="currency_code" name="currency_code" class="form-control" value="{{ store.currency_code }}">
+		    </div>	
+
+		    <div class="form-group">
+		      <label for="item_location">Item Location</label>
+		      <input type="text" id="item_location" name="item_location" class="form-control" value="{{ store.item_location }}">
+		    </div>	
+
+		    <div class="form-group">
+		      <label for="dispatch_time">Dispatch Time</label>
+		      <input type="text" id="dispatch_time" name="dispatch_time" class="form-control" value="{{ store.dispatch_time }}">
+		    </div>	
+
+			<div class="form-group">
+				<label for="listing_duration">Listing Duration</label>
+				<select class="form-control" id="listing_duration" name="listing_duration">
+				{% for ld in listing_durations %}
+					{% set listing_duration = '' %}
+					{% if store.listing_duration == ld %}
+					{% set listing_duration = 'selected' %}
+					{% endif %}	
+				 	<option value="{{ ld }}" {{ listing_duration }}>{{ ld }}</option>
+				{% endfor %}
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="listing_type">Listing Type</label>
+				<select class="form-control" id="listing_type" name="listing_type">
+				{% for lt in listing_types %}
+					{% set listing_type = '' %}
+					{% if store.listing_type == lt %}
+					{% set listing_type = 'selected' %}
+					{% endif %}	
+				 	<option value="{{ lt }}" {{ listing_type }}>{{ lt }}</option>
+				{% endfor %}
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="condition_type">Condition Type</label>
+				<select class="form-control" id="condition_type" name="condition_type">
+				{% for ct in condition_types %}
+					{% set condition_type = '' %}
+					{% if store.condition_type == ct['id'] %}
+					{% set condition_type = 'selected' %}
+					{% endif %}	
+				 	<option value="{{ ct['id'] }}" {{ condition_type }}>{{ ct['name'] }}</option>
+				{% endfor %}
+				</select>
+			</div>			
+
+			<div class="form-group">
+				{% set optimal_picturesize = '' %}
+				{% if store.optimal_picturesize == 1 %}
+				{% set optimal_picturesize = 'checked' %}
+				{% endif %}		
+				<div class="checkbox">
+				  <label for="optimal_picturesize">
+				    <input type="checkbox" id="optimal_picturesize" name="optimal_picturesize" {{ optimal_picturesize }}>
+				    Optimal Picture Size
+				  </label>
+				</div>
+			</div>
+
+			<div class="form-group">	
+				{% set out_of_stock_control = '' %}
+				{% if store.out_of_stock_control == 1 %}
+				{% set out_of_stock_control = 'checked' %}
+				{% endif %}	
+				<div class="checkbox">
+				  <label for="out_of_stock_control">
+				    <input type="checkbox" id="out_of_stock_control" name="out_of_stock_control" {{ out_of_stock_control }}>
+				    Out of stock control
+				  </label>
+				</div>
+			</div>
+
+
+			<div class="form-group">	
+				{% set get_it_fast = '' %}
+				{% if store.get_it_fast == 1 %}
+				{% set get_it_fast = 'checked' %}
+				{% endif %}	
+				<div class="checkbox">
+				  <label for="get_it_fast">
+				    <input type="checkbox" id="get_it_fast" name="get_it_fast" {{ get_it_fast }}>
+				    Get it Fast
+				  </label>
+				</div>
+			</div>
+
+			<div class="form-group">	
+				{% set include_prefilled = '' %}
+				{% if store.include_prefilled == 1 %}
+				{% set include_prefilled = 'checked' %}
+				{% endif %}
+				<div class="checkbox">
+				  <label for="include_prefilled">
+				    <input type="checkbox" id="include_prefilled" name="include_prefilled" {{ include_prefilled }}>
+				    Include Prefilled Item Now
+				  </label>
+				</div>
+			</div>
+
+		   	<div class="form-group">
+		   		<label>Seller Profiles</label>
+				{% for r in user_preferences.seller_profiles %}
+				<div class="radio">
+				  <label>
+				  	{% set key = r['type'] ~ '_profile' %}
+					{% set checked = '' %}
+					{% if (r['type'] == 'PAYMENT' and store.payment_profile == r['id']) or (r['type'] == 'RETURN_POLICY' and store.return_profile == r['id']) or (r['type'] == 'SHIPPING' and store.shipping_profile == r['id']) %}
+					{% set checked = 'checked' %}
+					{% endif %}	
+				    <input type="radio" name="{{ r['type'] }}" id="{{ r['id'] }}" value="{{ r['id'] }}" {{ checked }}>
+				  	{{ r['name'] }}
+				  </label>
+				</div>
+				{% endfor %}
+		   	</div>
+				
+			<div class="form-group">
+				<label>Shipping Service</label>
+				{% for r in shipping_services %}
+				<div class="radio">
+				  <label>
+					{% set shipping_service = '' %}
+					{% if store.shipping_service == r %}
+					{% set shipping_service = 'checked' %}
+					{% endif %}	
+				    <input type="radio" name="shipping_service" id="{{ r }}" value="{{ r }}" {{ shipping_service }}>
+				  	{{ r }}
+				  </label>
+				</div>
+				{% endfor %}
+			</div>
+
+			<div class="form-group">
+				<label for="shippingservice_priority">Shipping Service Priority</label>
+				<select name="shippingservice_priority" id="shippingservice_priority">
+	                {% for sp in shippingservice_priorities %}
+	                {% set shippingservice_priority = '' %}
+	                {% if store.shippingservice_priority == sp %}
+					{% set shippingservice_priority = 'selected' %}
+	                {% endif %}
+					<option value="{{ sp }}" {{ shippingservice_priority }}>{{ sp }}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="shippingservice_cost">Shipping Service Cost</label>
+				<input type="text" class="form-control" id="shippingservice_cost" name="shippingservice_cost" value="{{ store.shippingservice_cost }}">
+			</div>
+
+			<div class="form-group">
+				<label for="shippingservice_additionalcost">Shipping Service Additional Cost</label>
+				<input type="text" class="form-control" id="shippingservice_additionalcost" name="shippingservice_additionalcost" value="{{ store.shippingservice_additionalcost }}">
+			</div>
+
+		    <div class="form-group">
+		      <div class="col-lg-10">
+		        <button type="submit" class="btn btn-primary">Update Settings</button>
+		      </div>
+		    </div>
+
+		  </fieldset>
+		</form>
+	</div>
+</div>
+{% endblock %}

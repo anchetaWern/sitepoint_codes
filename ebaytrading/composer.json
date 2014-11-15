@@ -1,0 +1,16 @@
+{
+	"require" : {
+		"slim/slim-skeleton": "dev-master",
+		"slimcontroller/slimcontroller": "dev-master",
+		"guzzlehttp/guzzle": "4.*",
+		"vlucas/valitron": "~1.2",
+		"codeguy/upload": "*"
+	},
+	"autoload": {
+	  "classmap": [
+	    "controllers",
+	    "classes"
+	  ],
+	   "psr-0": {"Herrera\\Wise" : "src/lib"}
+	}
+}

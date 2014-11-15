@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ title }}</title>
+	<link rel="stylesheet" href="{{ baseUrl }}/assets/lib/bootstrap/bootstrap.css">
+	{% if is_productpage %}
+	<link rel="stylesheet" href="{{ baseUrl }}/assets/lib/dropzone/dropzone.css">
+	{% endif %}
+</head>
+<body>
+	
+ 	
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">{{ title }}</a>
+        </div>
+        <div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="{{ baseUrl }}">Home</a></li>
+				<li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <span class="caret"></span></a>
+				  <ul class="dropdown-menu" role="menu">
+				    <li><a href="{{ baseUrl }}/products/new">New</a></li>
+				    <li><a href="{{ baseUrl }}/products">List</a></li>
+				  </ul>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav">
+				<li class="dropdown"><a href="{{ baseUrl }}/token">Get Token</a></li>
+			</ul>
+			<ul class="nav navbar-nav">
+				<li><a href="{{ baseUrl }}/settings">Settings</a></li>
+			</ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    	{% block content %}{% endblock %}
+    </div>
+	
+	<script src="{{ baseUrl }}/assets/js/jquery.js"></script>
+	<script src="{{ baseUrl }}/assets/lib/bootstrap/bootstrap.js"></script>
+	{% if is_productpage %}
+	<script src="{{ baseUrl }}/assets/js/handlebars.js"></script>
+	<script src="{{ baseUrl }}/assets/lib/dropzone/dropzone.js"></script>
+	<script src="{{ baseUrl }}/assets/js/dropzone-options.js"></script>
+	<script src="{{ baseUrl }}/assets/js/new-product.js"></script>
+	{% endif %}
+
+</body>
+</html>
