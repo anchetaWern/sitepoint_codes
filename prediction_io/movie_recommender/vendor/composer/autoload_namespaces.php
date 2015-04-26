@@ -6,9 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Symfony\\Component\\EventDispatcher\\' => array($vendorDir . '/symfony/event-dispatcher'),
-    'PredictionIO' => array($vendorDir . '/predictionio/predictionio/src'),
-    'Guzzle\\Tests' => array($vendorDir . '/guzzle/guzzle/tests'),
-    'Guzzle' => array($vendorDir . '/guzzle/guzzle/src'),
+    'predictionio' => array($vendorDir . '/predictionio/predictionio/src'),
     '' => array($vendorDir . '/damel/flight-skeleton/src'),
 );

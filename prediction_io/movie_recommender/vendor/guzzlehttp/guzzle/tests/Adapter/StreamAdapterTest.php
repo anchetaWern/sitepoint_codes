@@ -249,7 +249,6 @@ class StreamAdapterTest extends \PHPUnit_Framework_TestCase
         $body = $this->getSendResult(['stream' => true, 'proxy' => '127.0.0.1:8125'])->getBody();
         $opts = stream_context_get_options($this->getStreamFromBody($body));
         $this->assertEquals('127.0.0.1:8125', $opts['http']['proxy']);
-        $this->assertTrue($opts['http']['request_fulluri']);
     }
 
     public function testAddsTimeout()
@@ -328,9 +327,10 @@ class StreamAdapterTest extends \PHPUnit_Framework_TestCase
             'base_url' => Server::$url,
             'adapter' => new StreamAdapter(new MessageFactory())
         ]);
-        ob_start();
-        $client->get('/', ['debug' => true]);
-        $contents = ob_get_clean();
+        $fp = fopen('php://temp', 'w');
+        $client->get('/', ['debug' => $fp]);
+        fseek($fp, 0);
+        $contents = stream_get_contents($fp);
         $this->assertContains('<http://127.0.0.1:8125/> [CONNECT]', $contents);
         $this->assertContains('<http://127.0.0.1:8125/> [FILE_SIZE_IS]', $contents);
         $this->assertContains('<http://127.0.0.1:8125/> [PROGRESS]', $contents);

@@ -7,12 +7,12 @@ require_once __DIR__ . '/AbstractCurl.php';
 use GuzzleHttp\Adapter\Curl\CurlAdapter;
 use GuzzleHttp\Adapter\Transaction;
 use GuzzleHttp\Client;
+use GuzzleHttp\Event\BeforeEvent;
 use GuzzleHttp\Event\ErrorEvent;
 use GuzzleHttp\Event\HeadersEvent;
 use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Message\MessageFactory;
 use GuzzleHttp\Message\Request;
-use GuzzleHttp\Event\BeforeEvent;
 use GuzzleHttp\Message\Response;
 use GuzzleHttp\Tests\Server;
 
@@ -135,5 +135,15 @@ class CurlAdapterTest extends AbstractCurl
         } catch (ServerException $e) {
             $this->assertFileNotExists($tmp);
         }
+    }
+
+    public function testRewindsStreamOnComplete()
+    {
+        Server::flush();
+        Server::enqueue("HTTP/1.1 200 OK\r\nFoo: bar\r\nContent-Length: 4\r\n\r\ntest");
+        $t = new Transaction(new Client(), new Request('GET', Server::$url));
+        $a = new CurlAdapter(new MessageFactory());
+        $response = $a->send($t);
+        $this->assertEquals('test', $response->getBody()->read(4));
     }
 }

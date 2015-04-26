@@ -3,17 +3,17 @@
 namespace GuzzleHttp;
 
 use GuzzleHttp\Event\HasEmitterInterface;
+use GuzzleHttp\Exception\AdapterException;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Message\RequestInterface;
 use GuzzleHttp\Message\ResponseInterface;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Exception\AdapterException;
 
 /**
  * Client interface for sending HTTP requests
  */
 interface ClientInterface extends HasEmitterInterface
 {
-    const VERSION = '4.2.1';
+    const VERSION = '4.2.3';
 
     /**
      * Create and return a new {@see RequestInterface} object.
@@ -139,7 +139,7 @@ interface ClientInterface extends HasEmitterInterface
      * @param array           $options  Associative array of options
      *     - parallel: (int) Maximum number of requests to send in parallel
      *     - before: (callable|array) Receives a BeforeEvent
-     *     - after: (callable|array) Receives a CompleteEvent
+     *     - complete: (callable|array) Receives a CompleteEvent
      *     - error: (callable|array) Receives a ErrorEvent
      *
      * @throws AdapterException When an error occurs in the HTTP adapter.

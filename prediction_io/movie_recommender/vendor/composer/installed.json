@@ -1,302 +1,5 @@
 [
     {
-        "name": "mikecao/flight",
-        "version": "v1.1",
-        "version_normalized": "1.1.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/mikecao/flight.git",
-            "reference": "7e1a098f6cd8a5dcfc8fc7451508dc5f96ed00b5"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/mikecao/flight/zipball/7e1a098f6cd8a5dcfc8fc7451508dc5f96ed00b5",
-            "reference": "7e1a098f6cd8a5dcfc8fc7451508dc5f96ed00b5",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "time": "2013-09-03 05:07:38",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "flight/Flight.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Mike Cao",
-                "email": "mike@mikecao.com",
-                "homepage": "http://www.mikecao.com/",
-                "role": "Original Developer"
-            }
-        ],
-        "description": "Flight is a fast, simple, extensible framework for PHP. Flight enables you to quickly and easily build RESTful web applications.",
-        "homepage": "http://flightphp.com"
-    },
-    {
-        "name": "damel/flight-skeleton",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/daniel-melzer/flight-skeleton.git",
-            "reference": "210db5260757059c318994d1e44a6a8444db66b7"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/daniel-melzer/flight-skeleton/zipball/210db5260757059c318994d1e44a6a8444db66b7",
-            "reference": "210db5260757059c318994d1e44a6a8444db66b7",
-            "shasum": ""
-        },
-        "require": {
-            "mikecao/flight": "v1.1",
-            "php": ">=5.3.3"
-        },
-        "suggest": {
-            "nategood/commando": "Library that beautifies and simplifies writing PHP scripts intended for command line use",
-            "teacup/log": "Small log file writer with adjustable log level settings.",
-            "teacup/orm": "Tiny ORM for simple CRUD operations"
-        },
-        "time": "2013-10-21 09:16:11",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Daniel Melzer",
-                "email": "daniel@melzer.ws",
-                "homepage": "http://daniel.melzer.ws",
-                "role": "Developer"
-            }
-        ],
-        "description": "Skeleton for applications based on the Flight PHP microframework.",
-        "keywords": [
-            "Skeleton",
-            "flight"
-        ]
-    },
-    {
-        "name": "symfony/event-dispatcher",
-        "version": "v2.5.3",
-        "version_normalized": "2.5.3.0",
-        "target-dir": "Symfony/Component/EventDispatcher",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/EventDispatcher.git",
-            "reference": "8faf5cc7e80fde74a650a36e60d32ce3c3e0457b"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/8faf5cc7e80fde74a650a36e60d32ce3c3e0457b",
-            "reference": "8faf5cc7e80fde74a650a36e60d32ce3c3e0457b",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "require-dev": {
-            "psr/log": "~1.0",
-            "symfony/config": "~2.0",
-            "symfony/dependency-injection": "~2.0",
-            "symfony/stopwatch": "~2.2"
-        },
-        "suggest": {
-            "symfony/dependency-injection": "",
-            "symfony/http-kernel": ""
-        },
-        "time": "2014-07-28 13:20:46",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.5-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Symfony\\Component\\EventDispatcher\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Symfony Community",
-                "homepage": "http://symfony.com/contributors"
-            },
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "Symfony EventDispatcher Component",
-        "homepage": "http://symfony.com"
-    },
-    {
-        "name": "guzzle/guzzle",
-        "version": "v3.8.1",
-        "version_normalized": "3.8.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/guzzle/guzzle.git",
-            "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
-            "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
-            "shasum": ""
-        },
-        "require": {
-            "ext-curl": "*",
-            "php": ">=5.3.3",
-            "symfony/event-dispatcher": ">=2.1"
-        },
-        "replace": {
-            "guzzle/batch": "self.version",
-            "guzzle/cache": "self.version",
-            "guzzle/common": "self.version",
-            "guzzle/http": "self.version",
-            "guzzle/inflection": "self.version",
-            "guzzle/iterator": "self.version",
-            "guzzle/log": "self.version",
-            "guzzle/parser": "self.version",
-            "guzzle/plugin": "self.version",
-            "guzzle/plugin-async": "self.version",
-            "guzzle/plugin-backoff": "self.version",
-            "guzzle/plugin-cache": "self.version",
-            "guzzle/plugin-cookie": "self.version",
-            "guzzle/plugin-curlauth": "self.version",
-            "guzzle/plugin-error-response": "self.version",
-            "guzzle/plugin-history": "self.version",
-            "guzzle/plugin-log": "self.version",
-            "guzzle/plugin-md5": "self.version",
-            "guzzle/plugin-mock": "self.version",
-            "guzzle/plugin-oauth": "self.version",
-            "guzzle/service": "self.version",
-            "guzzle/stream": "self.version"
-        },
-        "require-dev": {
-            "doctrine/cache": "*",
-            "monolog/monolog": "1.*",
-            "phpunit/phpunit": "3.7.*",
-            "psr/log": "1.0.*",
-            "symfony/class-loader": "*",
-            "zendframework/zend-cache": "<2.3",
-            "zendframework/zend-log": "<2.3"
-        },
-        "time": "2014-01-28 22:29:15",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.8-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Guzzle": "src/",
-                "Guzzle\\Tests": "tests/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Michael Dowling",
-                "email": "mtdowling@gmail.com",
-                "homepage": "https://github.com/mtdowling"
-            },
-            {
-                "name": "Guzzle Community",
-                "homepage": "https://github.com/guzzle/guzzle/contributors"
-            }
-        ],
-        "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
-        "homepage": "http://guzzlephp.org/",
-        "keywords": [
-            "client",
-            "curl",
-            "framework",
-            "http",
-            "http client",
-            "rest",
-            "web service"
-        ]
-    },
-    {
-        "name": "predictionio/predictionio",
-        "version": "v0.6.3",
-        "version_normalized": "0.6.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/PredictionIO/PredictionIO-PHP-SDK.git",
-            "reference": "d12f6102ce1a4ea74d22e8789148c0d25c367436"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/PredictionIO/PredictionIO-PHP-SDK/zipball/d12f6102ce1a4ea74d22e8789148c0d25c367436",
-            "reference": "d12f6102ce1a4ea74d22e8789148c0d25c367436",
-            "shasum": ""
-        },
-        "require": {
-            "guzzle/guzzle": "~3.8.0",
-            "php": ">=5.3.2"
-        },
-        "require-dev": {
-            "symfony/class-loader": "*"
-        },
-        "time": "2014-02-05 09:26:26",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "PredictionIO": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "Apache-2.0"
-        ],
-        "authors": [
-            {
-                "name": "The PredictionIO Team",
-                "email": "help@prediction.io",
-                "homepage": "http://prediction.io"
-            }
-        ],
-        "description": "PredictionIO API PHP Client",
-        "homepage": "http://prediction.io",
-        "keywords": [
-            "prediction",
-            "predictionio",
-            "recommendation",
-            "rest",
-            "restful",
-            "tappingstone",
-            "web service"
-        ]
-    },
-    {
         "name": "guzzlehttp/streams",
         "version": "2.1.0",
         "version_normalized": "2.1.0.0",
@@ -353,17 +56,17 @@
     },
     {
         "name": "guzzlehttp/guzzle",
-        "version": "4.2.1",
-        "version_normalized": "4.2.1.0",
+        "version": "4.2.3",
+        "version_normalized": "4.2.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/guzzle/guzzle.git",
-            "reference": "47ca212e985d962b3cbd67675eec54bb72d66062"
+            "reference": "66fd916e9f9130bc22c51450476823391cb2f67c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/47ca212e985d962b3cbd67675eec54bb72d66062",
-            "reference": "47ca212e985d962b3cbd67675eec54bb72d66062",
+            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/66fd916e9f9130bc22c51450476823391cb2f67c",
+            "reference": "66fd916e9f9130bc22c51450476823391cb2f67c",
             "shasum": ""
         },
         "require": {
@@ -379,7 +82,7 @@
         "suggest": {
             "ext-curl": "Guzzle will use specific adapters if cURL is present"
         },
-        "time": "2014-08-20 05:30:12",
+        "time": "2014-10-05 19:29:14",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -416,6 +119,150 @@
             "http client",
             "rest",
             "web service"
+        ]
+    },
+    {
+        "name": "predictionio/predictionio",
+        "version": "v0.8.2",
+        "version_normalized": "0.8.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PredictionIO/PredictionIO-PHP-SDK.git",
+            "reference": "31fbfb50e0f3e381b0be0ccf247ffbf2dd1d5a98"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PredictionIO/PredictionIO-PHP-SDK/zipball/31fbfb50e0f3e381b0be0ccf247ffbf2dd1d5a98",
+            "reference": "31fbfb50e0f3e381b0be0ccf247ffbf2dd1d5a98",
+            "shasum": ""
+        },
+        "require": {
+            "guzzlehttp/guzzle": "~4.0",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "symfony/class-loader": "*"
+        },
+        "time": "2014-11-22 01:29:36",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "predictionio": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "The PredictionIO Team",
+                "email": "help@prediction.io",
+                "homepage": "http://prediction.io"
+            }
+        ],
+        "description": "PredictionIO API PHP Client",
+        "homepage": "http://prediction.io",
+        "keywords": [
+            "prediction",
+            "predictionio",
+            "recommendation",
+            "rest",
+            "restful",
+            "tappingstone",
+            "web service"
+        ]
+    },
+    {
+        "name": "mikecao/flight",
+        "version": "v1.2.13",
+        "version_normalized": "1.2.13.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/mikecao/flight.git",
+            "reference": "9b0b527ac5f1b75ad79d151a4510b8ea958769bf"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/mikecao/flight/zipball/9b0b527ac5f1b75ad79d151a4510b8ea958769bf",
+            "reference": "9b0b527ac5f1b75ad79d151a4510b8ea958769bf",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2015-03-24 04:14:58",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "flight/autoload.php",
+                "flight/Flight.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Mike Cao",
+                "email": "mike@mikecao.com",
+                "homepage": "http://www.mikecao.com/",
+                "role": "Original Developer"
+            }
+        ],
+        "description": "Flight is a fast, simple, extensible framework for PHP. Flight enables you to quickly and easily build RESTful web applications.",
+        "homepage": "http://flightphp.com"
+    },
+    {
+        "name": "damel/flight-skeleton",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/daniel-melzer/flight-skeleton.git",
+            "reference": "96f80984bc5b23ffde75f6dad87424cad8afc5b1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/daniel-melzer/flight-skeleton/zipball/96f80984bc5b23ffde75f6dad87424cad8afc5b1",
+            "reference": "96f80984bc5b23ffde75f6dad87424cad8afc5b1",
+            "shasum": ""
+        },
+        "require": {
+            "mikecao/flight": "~1.2",
+            "php": ">=5.3.3"
+        },
+        "suggest": {
+            "forestry/log": "Small log file writer with adjustable log level settings.",
+            "forestry/orm": "Small ORM for simple CRUD operations",
+            "maximebf/consolekit": "PHP 5.3 library to create command line utilities"
+        },
+        "time": "2015-03-27 13:39:03",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Daniel Melzer",
+                "email": "daniel@melzer.ws",
+                "homepage": "http://daniel.melzer.ws"
+            }
+        ],
+        "description": "Skeleton for applications based on the Flight PHP microframework.",
+        "keywords": [
+            "Skeleton",
+            "flight"
         ]
     }
 ]

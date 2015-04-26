@@ -17,15 +17,15 @@ class RedirectTest extends PHPUnit_Framework_TestCase
     private $app;
 
     function getBaseUrl($base, $url){
-        if ($base != '/' && $url[0] != '/' && strpos($url, '://') === false) {
-            return $base.'/'.$url;
+        if ($base != '/' && strpos($url, '://') === false) {
+            $url = preg_replace('#/+#', '/', $base.'/'.$url);
         }
 
         return $url;
     }
 
     function setUp() {
-        putenv('SCRIPT_NAME=/subdir/index.php');
+        $_SERVER['SCRIPT_NAME'] = '/subdir/index.php';
 
         $this->app = new \flight\Engine();
         $this->app->set('flight.base_url', '/testdir');
@@ -38,15 +38,15 @@ class RedirectTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('/subdir', $base);
     }
 
-    // Absolute URLs should ignore the base
+    // Absolute URLs should include the base
     function testAbsoluteUrl(){
         $url = '/login';
         $base = $this->app->request()->base;
 
-        $this->assertEquals('/login', $this->getBaseUrl($base, $url));
+        $this->assertEquals('/subdir/login', $this->getBaseUrl($base, $url));
     }
 
-    // Relative URLs shuold include the base
+    // Relative URLs should include the base
     function testRelativeUrl(){
         $url = 'login';
         $base = $this->app->request()->base;

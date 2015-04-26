@@ -8,6 +8,7 @@
 
 require_once 'PHPUnit/Autoload.php';
 require_once __DIR__.'/../flight/autoload.php';
+require_once __DIR__.'/classes/User.php';
 
 class RegisterTest extends PHPUnit_Framework_TestCase
 {
@@ -42,7 +43,7 @@ class RegisterTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Bob', $user->name);
     }
 
-    // Register a class with initialzation
+    // Register a class with initialization
     function testRegisterWithInitialization(){
         $this->app->register('reg3', 'User', array('Bob'), function($user){
             $user->name = 'Fred';
@@ -82,13 +83,5 @@ class RegisterTest extends PHPUnit_Framework_TestCase
         $user = $this->app->reg5();
 
         $this->assertEquals(123, $user);
-    }
-}
-
-class User {
-    public $name;
-
-    public function User($name = ''){
-        $this->name = $name;
     }
 }

@@ -5,23 +5,25 @@ namespace GuzzleHttp\Adapter\Curl
 {
     function curl_setopt_array($handle, array $options)
     {
-        $_SERVER['last_curl'] = $options;
+        if (array_values($options) != [null, null, null, null]) {
+            $_SERVER['last_curl'] = $options;
+        }
         \curl_setopt_array($handle, $options);
     }
 }
 
 namespace GuzzleHttp\Tests\Adapter\Curl {
 
-    use GuzzleHttp\Adapter\Curl\MultiAdapter;
-    use GuzzleHttp\Event\BeforeEvent;
-    use GuzzleHttp\Exception\ServerException;
-    use GuzzleHttp\Message\RequestInterface;
-    use GuzzleHttp\Stream\Stream;
     use GuzzleHttp\Adapter\Curl\CurlFactory;
+    use GuzzleHttp\Adapter\Curl\MultiAdapter;
     use GuzzleHttp\Adapter\Transaction;
     use GuzzleHttp\Client;
+    use GuzzleHttp\Event\BeforeEvent;
+    use GuzzleHttp\Exception\ServerException;
     use GuzzleHttp\Message\MessageFactory;
     use GuzzleHttp\Message\Request;
+    use GuzzleHttp\Message\RequestInterface;
+    use GuzzleHttp\Stream\Stream;
     use GuzzleHttp\Tests\Server;
 
     /**
@@ -78,8 +80,8 @@ namespace GuzzleHttp\Tests\Adapter\Curl {
             $this->assertEquals('1.1', $sent->getProtocolVersion());
             $this->assertEquals('hi', (string) $stream);
 
-            $this->assertEquals(2, $_SERVER['last_curl'][CURLOPT_SSL_VERIFYHOST]);
             $this->assertEquals(true, $_SERVER['last_curl'][CURLOPT_SSL_VERIFYPEER]);
+            $this->assertEquals(2, $_SERVER['last_curl'][CURLOPT_SSL_VERIFYHOST]);
         }
 
         public function testSendsHeadRequests()

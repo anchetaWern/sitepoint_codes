@@ -53,6 +53,14 @@ class MultiAdapterTest extends AbstractCurl
         $_SERVER[MultiAdapter::ENV_SELECT_TIMEOUT] = $current;
     }
 
+    public function testCanSetMaxHandles()
+    {
+        $a = new MultiAdapter(new MessageFactory());
+        $this->assertEquals(3, $this->readAttribute($a, 'maxHandles'));
+        $a = new MultiAdapter(new MessageFactory(), ['max_handles' => 10]);
+        $this->assertEquals(10, $this->readAttribute($a, 'maxHandles'));
+    }
+
     /**
      * @expectedException \GuzzleHttp\Exception\AdapterException
      * @expectedExceptionMessage cURL error -2:
@@ -340,5 +348,15 @@ class MultiAdapterTest extends AbstractCurl
         } catch (RequestException $e) {
             $this->assertSame($request, $e->getRequest());
         }
+    }
+
+    public function testRewindsStreamOnComplete()
+    {
+        Server::flush();
+        Server::enqueue("HTTP/1.1 200 OK\r\nFoo: bar\r\nContent-Length: 4\r\n\r\ntest");
+        $t = new Transaction(new Client(), new Request('GET', Server::$url));
+        $a = new MultiAdapter(new MessageFactory());
+        $response = $a->send($t);
+        $this->assertEquals('test', $response->getBody()->read(4));
     }
 }

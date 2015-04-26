@@ -2,11 +2,11 @@
 namespace GuzzleHttp\Adapter\Curl;
 
 use GuzzleHttp\Adapter\TransactionInterface;
+use GuzzleHttp\Exception\AdapterException;
 use GuzzleHttp\Message\MessageFactoryInterface;
 use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Stream\Stream;
 use GuzzleHttp\Stream\LazyOpenStream;
-use GuzzleHttp\Exception\AdapterException;
+use GuzzleHttp\Stream\Stream;
 
 /**
  * Creates curl resources from a request and response object
@@ -176,10 +176,16 @@ class CurlFactory
         &$options,
         $value
     ) {
-        if ($value) {
-            $options[CURLOPT_STDERR] = is_resource($value) ? $value : STDOUT;
-            $options[CURLOPT_VERBOSE] = true;
+        if (!$value) {
+            return;
         }
+
+        if (!is_resource($value)) {
+            $value = defined('STDOUT') ? STDOUT : fopen('php://output', 'w');
+        }
+
+        $options[CURLOPT_STDERR] = $value;
+        $options[CURLOPT_VERBOSE] = true;
     }
 
     private function add_proxy(

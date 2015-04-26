@@ -2,16 +2,16 @@
 
 namespace GuzzleHttp;
 
+use GuzzleHttp\Adapter\AdapterInterface;
+use GuzzleHttp\Adapter\Curl\CurlAdapter;
 use GuzzleHttp\Adapter\Curl\MultiAdapter;
-use GuzzleHttp\Event\HasEmitterTrait;
 use GuzzleHttp\Adapter\FakeParallelAdapter;
 use GuzzleHttp\Adapter\ParallelAdapterInterface;
-use GuzzleHttp\Adapter\AdapterInterface;
 use GuzzleHttp\Adapter\StreamAdapter;
 use GuzzleHttp\Adapter\StreamingProxyAdapter;
-use GuzzleHttp\Adapter\Curl\CurlAdapter;
 use GuzzleHttp\Adapter\Transaction;
 use GuzzleHttp\Adapter\TransactionIterator;
+use GuzzleHttp\Event\HasEmitterTrait;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Message\MessageFactory;
 use GuzzleHttp\Message\MessageFactoryInterface;
@@ -239,12 +239,12 @@ class Client implements ClientInterface
         }
 
         // Use the standard Linux HTTP_PROXY and HTTPS_PROXY if set
-        if (isset($_SERVER['HTTP_PROXY'])) {
-            $settings['proxy']['http'] = $_SERVER['HTTP_PROXY'];
+        if ($proxy = getenv('HTTP_PROXY')) {
+            $settings['proxy']['http'] = $proxy;
         }
 
-        if (isset($_SERVER['HTTPS_PROXY'])) {
-            $settings['proxy']['https'] = $_SERVER['HTTPS_PROXY'];
+        if ($proxy = getenv('HTTPS_PROXY')) {
+            $settings['proxy']['https'] = $proxy;
         }
 
         return $settings;

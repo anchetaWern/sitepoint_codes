@@ -1,7 +1,7 @@
 {
  "require": {
    "damel/flight-skeleton": "dev-master",
-   "predictionio/predictionio": "~0.6.0",
+   "predictionio/predictionio": "~0.8.2",
    "guzzlehttp/guzzle": "4.*"
  },
  "autoload": {

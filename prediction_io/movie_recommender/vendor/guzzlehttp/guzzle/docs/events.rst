@@ -145,7 +145,7 @@ of a ``GuzzleHttp\Common\EventInterface`` object:
     });
 
 After stopping the propagation of an event, any subsequent event listeners that
-have not yet been trigger will not be triggered. You can check to see if the
+have not yet been triggered will not be triggered. You can check to see if the
 propagation of an event was stopped using the ``isPropagationStopped()`` method
 of the event.
 
@@ -198,7 +198,7 @@ priority of the listener (as shown in the ``before`` listener in the example).
                 'before'   => ['onBefore', 100],
                 'complete' => ['onComplete'],
                 // You can pass a list of listeners with different priorities
-                'error'    => [['beforeError', 'first'], ['afterError', 'last]]
+                'error'    => [['beforeError', 'first'], ['afterError', 'last']]
             ];
         }
 
@@ -301,7 +301,7 @@ Requests emit lifecycle events when they are transferred.
     Request lifecycle events may be triggered multiple times due to redirects,
     retries, or reusing a request multiple times. Use the ``once()`` method
     of an event emitter if you only want the event to be triggered once. You
-    can also remove an event listener from an emitter by using the emitter the
+    can also remove an event listener from an emitter by using the emitter which
     is provided to the listener.
 
 .. _before_event:

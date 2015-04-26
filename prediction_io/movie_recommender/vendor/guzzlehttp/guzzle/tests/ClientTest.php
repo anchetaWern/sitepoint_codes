@@ -6,9 +6,9 @@ use GuzzleHttp\Adapter\FakeParallelAdapter;
 use GuzzleHttp\Adapter\MockAdapter;
 use GuzzleHttp\Client;
 use GuzzleHttp\Event\BeforeEvent;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Message\MessageFactory;
 use GuzzleHttp\Message\Response;
-use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Subscriber\History;
 use GuzzleHttp\Subscriber\Mock;
 
@@ -399,7 +399,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         ];
 
         $client->sendAll($requests);
-        $requests = array_map(function($r) { return $r->getMethod(); }, $history->getRequests());
+        $requests = array_map(function ($r) { return $r->getMethod(); }, $history->getRequests());
         $this->assertContains('GET', $requests);
         $this->assertContains('POST', $requests);
         $this->assertContains('PUT', $requests);
@@ -437,29 +437,24 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function testUsesProxyEnvironmentVariables()
     {
-        $http = isset($_SERVER['HTTP_PROXY']) ? $_SERVER['HTTP_PROXY'] : null;
-        $https = isset($_SERVER['HTTPS_PROXY']) ? $_SERVER['HTTPS_PROXY'] : null;
-        unset($_SERVER['HTTP_PROXY']);
-        unset($_SERVER['HTTPS_PROXY']);
-
         $client = new Client();
         $this->assertNull($client->getDefaultOption('proxy'));
 
-        $_SERVER['HTTP_PROXY'] = '127.0.0.1';
+        putenv('HTTP_PROXY=127.0.0.1');
         $client = new Client();
         $this->assertEquals(
             ['http' => '127.0.0.1'],
             $client->getDefaultOption('proxy')
         );
 
-        $_SERVER['HTTPS_PROXY'] = '127.0.0.2';
+        putenv('HTTPS_PROXY=127.0.0.2');
         $client = new Client();
         $this->assertEquals(
             ['http' => '127.0.0.1', 'https' => '127.0.0.2'],
             $client->getDefaultOption('proxy')
         );
 
-        $_SERVER['HTTP_PROXY'] = $http;
-        $_SERVER['HTTPS_PROXY'] = $https;
+        putenv('HTTP_PROXY=');
+        putenv('HTTPS_PROXY=');
     }
 }

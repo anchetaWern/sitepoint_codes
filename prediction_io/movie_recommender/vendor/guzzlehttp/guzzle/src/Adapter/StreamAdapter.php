@@ -9,8 +9,8 @@ use GuzzleHttp\Message\AbstractMessage;
 use GuzzleHttp\Message\MessageFactoryInterface;
 use GuzzleHttp\Message\RequestInterface;
 use GuzzleHttp\Stream\InflateStream;
-use GuzzleHttp\Stream\Stream;
 use GuzzleHttp\Stream\LazyOpenStream;
+use GuzzleHttp\Stream\Stream;
 use GuzzleHttp\Stream\StreamInterface;
 use GuzzleHttp\Stream\Utils;
 
@@ -247,12 +247,10 @@ class StreamAdapter implements AdapterInterface
     {
         if (!is_array($value)) {
             $options['http']['proxy'] = $value;
-            $options['http']['request_fulluri'] = true;
         } else {
             $scheme = $request->getScheme();
             if (isset($value[$scheme])) {
                 $options['http']['proxy'] = $value[$scheme];
-                $options['http']['request_fulluri'] = true;
             }
         }
     }
@@ -311,7 +309,7 @@ class StreamAdapter implements AdapterInterface
             'bytes_transferred', 'bytes_max'];
 
         if (!is_resource($value)) {
-            $value = fopen('php://output', 'w');
+            $value = defined('STDOUT') ? STDOUT : fopen('php://output', 'w');
         }
 
         $params['notification'] = function () use ($request, $value, $map, $args) {

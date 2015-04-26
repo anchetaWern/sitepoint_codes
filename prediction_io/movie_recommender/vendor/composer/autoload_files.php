@@ -6,7 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    $vendorDir . '/mikecao/flight/flight/Flight.php',
     $vendorDir . '/guzzlehttp/streams/src/functions.php',
     $vendorDir . '/guzzlehttp/guzzle/src/functions.php',
+    $vendorDir . '/mikecao/flight/flight/autoload.php',
+    $vendorDir . '/mikecao/flight/flight/Flight.php',
 );

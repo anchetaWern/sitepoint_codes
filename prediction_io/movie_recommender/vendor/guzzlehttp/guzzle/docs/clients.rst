@@ -288,7 +288,7 @@ failed request to an array that we can use to process errors later.
 Throwing Errors Immediately
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It sometimes is useful to throw exceptions immediately when the occur. The
+It sometimes is useful to throw exceptions immediately when they occur. The
 following example shows how to use an event listener to throw exceptions
 immediately and prevent subsequent requests from being sent.
 
@@ -337,7 +337,7 @@ function ``GuzzleHttp\batch()`` that makes this very simple:
     $results = GuzzleHttp\batch($client, $requests);
 
     // Results is an SplObjectStorage object where each request is a key
-    foreach ($results as $request) {
+    foreach ($requests as $request) {
         echo $request->getUrl() . "\n";
         // Get the result (either a ResponseInterface or RequestException)
         $result = $results[$request];

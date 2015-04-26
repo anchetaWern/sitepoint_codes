@@ -10,8 +10,7 @@ class Home {
 
 		$client = Flight::prediction_client();
 		
-		$command = $client->getCommand('create_user', array('pio_uid' => $user_id));
-		$response = $client->execute($command);
+		$response = $client->setUser($user_id);
 		
 		Flight::render('index', array('response' => $response), 'content');
 		Flight::render('layout', array('title' => 'Home', 'base_path' => '/movie_recommender'));
@@ -46,11 +45,7 @@ class Home {
 				$movie_id = substr($params['movie_id'], strpos($params['movie_id'], '_') + 1);
 				$action = $params['action'];
 				
-
-				$client->identify($user_id);
-				$user_action = $client->getCommand('record_action_on_item', array('pio_action' => $action, 'pio_iid' => $movie_id));
-				$client->execute($user_action);
-
+				$user_action = $client->recordUserActionOnItem($action, $user_id, $movie_id);
 
 				$movies_viewed += 1;
 				if($movies_viewed == 20){
@@ -82,15 +77,14 @@ class Home {
 		try{
 			$user_id = $_SESSION['user_id'];
 
-		    $client->identify($user_id);
-		    $command = $client->getCommand('itemrec_get_top_n', array('pio_engine' => 'movie-recommender', 'pio_n' => 9));
-		    $recommended_movies_raw = $client->execute($command);
-		    
-		    $movie_iids = $recommended_movies_raw['pio_iids'];
+			
+			$client = new EngineClient('http://localhost:8000');
 
-			array_walk($movie_iids, function(&$movie_iid){
-			  $movie_iid = '4_' . $movie_iid;
-			});	    
+			$recommended_movies_raw = $client->sendQuery(array('user' => $user_id, 'num' => 9));
+					   
+			$movie_iids = array_map(function($item){
+				return $item['item'];
+			}, $recommended_movies_raw['itemScores']);   
 
 			$cursor = $items->find(array('itypes' => '1', '_id' => array('$in' => $movie_iids)));
 			$recommended_movies = array_values(iterator_to_array($cursor));	

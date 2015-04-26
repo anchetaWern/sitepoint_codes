@@ -2,11 +2,11 @@
 
 namespace GuzzleHttp\Subscriber;
 
+use GuzzleHttp\Event\CompleteEvent;
 use GuzzleHttp\Event\RequestEvents;
 use GuzzleHttp\Event\SubscriberInterface;
-use GuzzleHttp\Event\CompleteEvent;
-use GuzzleHttp\Exception\TooManyRedirectsException;
 use GuzzleHttp\Exception\CouldNotRewindStreamException;
+use GuzzleHttp\Exception\TooManyRedirectsException;
 use GuzzleHttp\Message\RequestInterface;
 use GuzzleHttp\Message\ResponseInterface;
 use GuzzleHttp\Url;
@@ -73,18 +73,18 @@ class Redirect implements SubscriberInterface
         }
 
         $redirectCount = 0;
-        $request = $event->getRequest();
+        $redirectRequest = $event->getRequest();
         $redirectResponse = $response;
-        $max = $request->getConfig()->getPath('redirect/max') ?: 5;
+        $max = $redirectRequest->getConfig()->getPath('redirect/max') ?: 5;
 
         do {
             if (++$redirectCount > $max) {
                 throw new TooManyRedirectsException(
                     "Will not follow more than {$redirectCount} redirects",
-                    $request
+                    $redirectRequest
                 );
             }
-            $redirectRequest = $this->createRedirectRequest($request, $redirectResponse);
+            $redirectRequest = $this->createRedirectRequest($redirectRequest, $redirectResponse);
             $redirectResponse = $event->getClient()->send($redirectRequest);
         } while (substr($redirectResponse->getStatusCode(), 0, 1) == '3' &&
             $redirectResponse->hasHeader('Location')
