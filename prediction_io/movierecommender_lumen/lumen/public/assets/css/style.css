@@ -1,0 +1,16 @@
+.col-centered {
+	float: none;
+	margin: 0 auto;
+}
+
+.button-container {
+	margin-top: 20px;
+}
+
+.show-recommendations {
+	display: none;
+}
+
+#recommended-movies > div {
+    height: 1000px;
+}
