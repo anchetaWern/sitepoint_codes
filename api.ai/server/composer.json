@@ -1,0 +1,7 @@
+{
+    "require": {
+        "triplepoint/php-units-of-measure": "dev-master",
+        "guzzlehttp/guzzle": "~5.0",
+        "joshtronic/php-googleplaces": "dev-master"
+    }
+}
