@@ -1,0 +1,1 @@
+<a href='{{ login_url }}'>Login with Instagram</a>
