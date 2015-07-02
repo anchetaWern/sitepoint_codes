@@ -1,0 +1,39 @@
+#anime-shows {
+	overflow: auto;
+	padding: 20px;
+}
+
+.anime-show {
+    float: left;
+    width: 227px;
+    margin: 10px;
+    height: 470px;
+	font-size: 15px;
+}
+
+.anime-poster-container {
+	height: 332px;
+	overflow: hidden;
+}
+
+#anime-show {
+    padding: 20px;
+    width: 500px;
+}
+
+.plot {
+	margin-top: 10px;
+	font-size: 16px;
+}
+
+.genre {
+	color: gray;
+}
+
+#pagination {
+	padding: 20px;
+}
+
+#pagination .page-numbers {
+    padding: 0 10px;
+}
