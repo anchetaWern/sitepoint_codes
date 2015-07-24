@@ -1,0 +1,23 @@
+{
+  "name": "socket.io-client",
+  "version": "1.3.5",
+  "homepage": "https://github.com/shSina/socket.io-client",
+  "authors": [
+    "shSina <sina.sharafzadeh@gmail.com>"
+  ],
+  "description": "socket.io-client bower compatible",
+  "main": "socket.io.js",
+  "keywords": [
+    "socket.io-client",
+    "socket.io",
+    "socketio-client"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

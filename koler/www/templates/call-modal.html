@@ -1,0 +1,48 @@
+<ion-modal-view>
+  <div class="bar bar-header item-input-inset bar-calm">
+    <button class="button button-icon icon ion-ios-arrow-left" ng-click="closeModal('search')"></button>
+    Call {{ peer_id }}
+  </div>
+
+  <ion-content class="padding has-header">
+  
+    <div class="calling-container" ng-if="isCalling && !callInProgress && !callIgnored && !callEnded">
+      <p>Calling to <span class="balanced">{{ peer_id }}</span>...</p>
+
+      <button class="button button-assertive" ng-click="ignore()">
+        Nevermind
+      </button>
+    </div>
+
+    <div class="calling-container" ng-if="!isCalling && !callInProgress && !callIgnored && !callEnded">
+      <p><span class="balanced">{{ peer_id }}</span> is calling you</p>
+
+      <button class="button button-positive" ng-click="answer()">
+        Answer
+      </button>
+
+      <button class="button button-assertive" ng-click="ignore()">
+        Ignore
+      </button>
+    </div>
+
+    <div class="calling-container" ng-if="callInProgress && !callIgnored && !callEnded">
+      <p>Call in progress...</p>
+
+      <button class="button button-assertive" ng-click="end()">
+        End
+      </button>
+    </div>
+
+    <div ng-if="callIgnored && !callEnded && !callInProgress">
+      <p>Call Ignored</p>
+      <button class="button button-positive button-block" ng-click="closeModal()">Go back</button>
+    </div>
+
+    <div ng-if="callEnded && !callIgnored && !callInProgress">
+      <p>Call Ended</p>
+      <button class="button button-positive button-block" ng-click="closeModal()">Go back</button>
+    </div>
+
+  </ion-content>
+</ion-modal-view>
