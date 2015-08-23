@@ -7,9 +7,6 @@ $client = new Client();
 
 $query = $_POST['query'];
 
-$apiai_key = '';
-$apiai_subscription_key = '';
-
 $response = $client->post('https://api.api.ai/v1/query', array(
 	'headers' => array(
 		'Authorization' => "Bearer {$apiai_key}",
@@ -24,7 +21,8 @@ $response = $client->post('https://api.api.ai/v1/query', array(
 
 $result = $response->json();
 
-$jsonrates_api_key = '';
+
+$currencylayer_apikey = 'your currencylayer api key';
 
 if(!empty($result['result'])){
 
@@ -32,13 +30,15 @@ if(!empty($result['result'])){
 	$currency_to = $result['result']['parameters']['tocurrency'];
 	$amount = $result['result']['parameters']['number'];
 
-	$conversion_response = $client->get("http://jsonrates.com/get/?from={$currency_from}&to={$currency_to}&apikey={$jsonrates_api_key}");
+	$conversion_response = $client->get("http://apilayer.net/api/live?access_key={$currencylayer_apikey}&source={$currency_from}&currencies={$currency_to}");
 	$conversion_result = $conversion_response->json();
-
-	$rate = $conversion_result['rate'];
+	
+	$rate = $conversion_result['quotes'][$currency_from . $currency_to];
+	
 	$converted_amount = $amount * $rate;
 	
 	$speech = "{$amount} {$currency_from} is equivalent to {$converted_amount} {$currency_to}";
 	echo $speech;
+	
 }
 ?>
