@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "9c1862fbf3e7d0563ea79fbddef3e0a1",
+    "content-hash": "4bbd2fabe7fb8214602829efdc6340fd",
     "packages": [
         {
             "name": "codeguy/upload",
@@ -51,20 +51,20 @@
                 "upload",
                 "validation"
             ],
-            "time": "2013-07-07 17:01:41"
+            "time": "2013-07-07T17:01:41+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "4.2.3",
+            "version": "4.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "66fd916e9f9130bc22c51450476823391cb2f67c"
+                "reference": "13a8e5acff26b0a87d353042170b48976da004a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/66fd916e9f9130bc22c51450476823391cb2f67c",
-                "reference": "66fd916e9f9130bc22c51450476823391cb2f67c",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/13a8e5acff26b0a87d353042170b48976da004a1",
+                "reference": "13a8e5acff26b0a87d353042170b48976da004a1",
                 "shasum": ""
             },
             "require": {
@@ -87,12 +87,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\": "src/"
-                },
                 "files": [
                     "src/functions.php"
-                ]
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -116,7 +116,11 @@
                 "rest",
                 "web service"
             ],
-            "time": "2014-10-05 19:29:14"
+            "support": {
+                "issues": "https://github.com/guzzle/guzzle/issues",
+                "source": "https://github.com/guzzle/guzzle/tree/4.x"
+            },
+            "time": "2016-07-15T17:44:18+00:00"
         },
         {
             "name": "guzzlehttp/streams",
@@ -169,7 +173,12 @@
                 "Guzzle",
                 "stream"
             ],
-            "time": "2014-08-17 21:15:53"
+            "support": {
+                "issues": "https://github.com/guzzle/streams/issues",
+                "source": "https://github.com/guzzle/streams/tree/master"
+            },
+            "abandoned": true,
+            "time": "2014-08-17T21:15:53+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -241,7 +250,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-09-30 13:30:58"
+            "time": "2014-09-30T13:30:58+00:00"
         },
         {
             "name": "psr/log",
@@ -279,7 +288,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2012-12-21 11:40:51"
+            "time": "2012-12-21T11:40:51+00:00"
         },
         {
             "name": "slim/slim",
@@ -325,7 +334,7 @@
                 "rest",
                 "router"
             ],
-            "time": "2014-04-05 18:33:59"
+            "time": "2014-04-05T18:33:59+00:00"
         },
         {
             "name": "slim/slim-skeleton",
@@ -367,7 +376,7 @@
                 "rest",
                 "router"
             ],
-            "time": "2013-12-11 21:15:47"
+            "time": "2013-12-11T21:15:47+00:00"
         },
         {
             "name": "slim/views",
@@ -421,7 +430,7 @@
                 "slimphp",
                 "templating"
             ],
-            "time": "2014-04-03 16:31:10"
+            "time": "2014-04-03T16:31:10+00:00"
         },
         {
             "name": "slimcontroller/slimcontroller",
@@ -468,7 +477,7 @@
                 "controller",
                 "microframework"
             ],
-            "time": "2014-04-16 03:41:49"
+            "time": "2014-04-16T03:41:49+00:00"
         },
         {
             "name": "twig/twig",
@@ -525,7 +534,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-10-17 12:53:44"
+            "time": "2014-10-17T12:53:44+00:00"
         },
         {
             "name": "vlucas/valitron",
@@ -571,7 +580,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2014-09-08 19:55:11"
+            "time": "2014-09-08T19:55:11+00:00"
         }
     ],
     "packages-dev": [],
@@ -582,6 +591,8 @@
         "slimcontroller/slimcontroller": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.2.0"
 }
