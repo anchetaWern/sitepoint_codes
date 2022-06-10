@@ -2,7 +2,7 @@
 	"require" : {
 		"slim/slim-skeleton": "dev-master",
 		"slimcontroller/slimcontroller": "dev-master",
-		"guzzlehttp/guzzle": "4.*",
+		"guzzlehttp/guzzle": "6.*",
 		"vlucas/valitron": "~1.2",
 		"codeguy/upload": "*"
 	},
